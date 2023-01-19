@@ -262,7 +262,14 @@ order by case day
 --과제: 2005년 이전에 입사한 사원들에게 100만원 상품권,
 --과제: 2005년 후에 입사한 사원들에게 10만원 상품권을 지급한다.
 -- 사원들의 이름, 입사일, 상품권 금액을 조회하라.
-select last_name, hire_date, case when to_char(hire_date, 'YYYY') < 2005 then '100만원상품권'
-                when to_char(hire_date, 'YYYY') >= 2005 then '10만원상품권'
+select last_name, hire_date, case when to_char(hire_date, 'YYYY') <= 2005 then '100만원상품권'
+                when to_char(hire_date, 'YYYY') > 2005 then '10만원상품권'
                 end
 from employees;
+--답
+select last_name, hire_date,
+    case when hire_date <= '2005/12/31' then '100만원'
+        else '10만원' end gift
+from employees
+order by gift, hire_date;
+--
