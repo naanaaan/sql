@@ -128,7 +128,7 @@ commit;
 --특정 칼럼을 가지고 인덱스를 만드는 것이다. 칼럼을 복사해서 인덱스를 만듬
 drop index emp_last_name_idx;
 
-create index emp_lastname_idx
+create index emp_lastname_idx 
 on employees(last_name);
 
 select last_name, rowid
